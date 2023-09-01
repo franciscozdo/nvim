@@ -31,18 +31,18 @@ local settings = {
       opts.buffer = bufnr
       vim.keymap.set(mode, l, r, opts)
     end
-    map('n', '<C-k>', gs.prev_hunk)
-    map('n', '<C-j>', gs.next_hunk)
-    map('n', 'gp'   , gs.preview_hunk)
+    map('n', '<C-k>', gs.prev_hunk, {desc = 'Previous hunk'})
+    map('n', '<C-j>', gs.next_hunk, {desc = 'Next hunk'})
+    map('n', 'gp'   , gs.preview_hunk, {desc = 'Preview hunk'})
 
-    map('n', 'gs', gs.stage_hunk)
-    map('v', 'gs', function() gs.stage_hunk {vim.fn.line('.'), vim.fn.line('v')} end)
-    map('n', 'gu', gs.undo_stage_hunk)
+    map('n', 'gs', gs.stage_hunk, {desc = 'Stage hunk'})
+    map('v', 'gs', function() gs.stage_hunk {vim.fn.line('.'), vim.fn.line('v')} end, {desc = 'Stage selection'})
+    map('n', 'gu', gs.undo_stage_hunk, {desc = 'Unstage hunk'})
 
-    map('n', 'gR', gs.reset_hunk)
-    map('v', 'gR', function() gs.reset_hunk {vim.fn.line('.'), vim.fn.line('v')} end)
+    map('n', 'gR', gs.reset_hunk, {desc = 'Reset hunk'})
+    map('v', 'gR', function() gs.reset_hunk {vim.fn.line('.'), vim.fn.line('v')} end, {desc = 'Reset selection'})
 
-    map('n', 'gb', function() gs.blame_line{full=true} end)
+    map('n', 'gb', function() gs.blame_line{full=true} end, {desc = 'Blame line'})
   end
 }
 

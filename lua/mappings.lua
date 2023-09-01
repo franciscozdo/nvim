@@ -1,22 +1,26 @@
-local options = { noremap = true }
+local function map(mode, l, r, opts)
+  opts = opts or {}
+  opts.noremap = true
+  vim.keymap.set(mode, l, r, opts)
+end
 
 -- Split resizing mappings
-vim.keymap.set('n', '=', ':vertical resize +5<CR>', options)
-vim.keymap.set('n', '-', ':vertical resize -5<CR>', options)
-vim.keymap.set('n', '+', ':horizontal resize +5<CR>', options)
-vim.keymap.set('n', '_', ':horizontal resize -5<CR>', options)
+map('n', '=', ':vertical resize +5<CR>', {desc = 'Vertical resize +'})
+map('n', '-', ':vertical resize -5<CR>', {desc = 'Vertical resize -'})
+map('n', '+', ':horizontal resize +5<CR>', {desc = 'Horizontal resize +'})
+map('n', '_', ':horizontal resize -5<CR>', {desc = 'Horizontal resize -'})
 
 -- Tab handling mappings
-vim.keymap.set('n', '<leader>t', ':tabedit ', options)
-vim.keymap.set('n', '<leader>n', ':tabn<CR> ', options)
-vim.keymap.set('n', '<leader>m', ':tabp<CR> ', options)
+map('n', '<leader>t', ':tabedit ', {desc = 'Open new tab'})
+map('n', '<leader>n', ':tabn<CR> ', {desc = 'Go to next tab'})
+map('n', '<leader>m', ':tabp<CR> ', {desc = 'Go to prev tab'})
 
 -- Toggle spelling
 local function toggle_spell_check()
   vim.o.spell = not vim.o.spell
   print('spell: ' .. tostring(vim.o.spell))
 end
-vim.keymap.set('n', '<leader>s', toggle_spell_check, options)
+map('n', '<leader>s', toggle_spell_check, {desc = 'Toggle spell checking'})
 
 -- Open Lexplore
-vim.keymap.set('n', '<leader>e', ':Lex<CR>', options);
+map('n', '<leader>e', ':Lex<CR>', {desc = 'Open file explorer (Lex)'});

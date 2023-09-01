@@ -7,26 +7,30 @@ require('mason-lspconfig').setup({
 })
 
 local on_attach = function(ev)
-  local opts = { buffer = ev.buf }
+  local function map(mode, l, r, opts)
+    opts = opts or {}
+    opts.buffer = ev.bufnr
+    vim.keymap.set(mode, l, r, opts)
+  end
 
   -- Info
-  vim.keymap.set('n', 'gd',  vim.lsp.buf.definition,    opts)
-  vim.keymap.set('n', 'gD',  vim.lsp.buf.declaration,   opts)
-  vim.keymap.set('n', 'gtd', vim.lsp.buf.type_definition, opts)
-  vim.keymap.set('n', 'gr',  vim.lsp.buf.references,    opts)
-  vim.keymap.set('n', 'gi',  vim.lsp.buf.implementation,  opts)
-  vim.keymap.set('n', 'gk',  vim.lsp.buf.hover,       opts)
+  map('n', 'gd',  vim.lsp.buf.definition, {desc = 'Go to definition'})
+  map('n', 'gD',  vim.lsp.buf.declaration, {desc = 'Go to declaration'})
+  map('n', 'gtd', vim.lsp.buf.type_definition, {desc = 'Go to type definition'})
+  map('n', 'gr',  vim.lsp.buf.references, {desc = 'Show symbol references'})
+  map('n', 'gi',  vim.lsp.buf.implementation, {desc = 'Go to implementation'})
+  map('n', 'gk',  vim.lsp.buf.hover, {desc = 'Show symbol info'})
 
   -- Editing
-  vim.keymap.set('n', 'gA',  vim.lsp.buf.code_action,   opts)
-  vim.keymap.set('n', 'gF',  function() vim.lsp.buf.format { async = true } end, opts)
+  map('n', 'gA',  vim.lsp.buf.code_action, {desc = 'Show available actions'})
+  map('n', 'gF',  function() vim.lsp.buf.format { async = true } end, {desc = 'Format buffer'})
 
   -- TODO: enable renaming
 
   -- Diagnostics
-  vim.keymap.set('n', 'gw',  vim.diagnostic.open_float,   opts)
-  vim.keymap.set('n', 'g]',  vim.diagnostic.goto_next,  opts)
-  vim.keymap.set('n', 'g[',  vim.diagnostic.goto_prev,  opts)
+  map('n', 'gw',  vim.diagnostic.open_float,   {desc = 'Show diagnostics for current line'})
+  map('n', 'g]',  vim.diagnostic.goto_next,  {desc = 'Go to next diagnostic'})
+  map('n', 'g[',  vim.diagnostic.goto_prev,  {desc = 'Go to previous diagnostic'})
 
   local function toggle_diagnostics()
     if vim.diagnostic.is_disabled() then
@@ -35,7 +39,7 @@ local on_attach = function(ev)
       vim.diagnostic.disable()
     end
   end
-  vim.keymap.set('n', '<leader>tt', toggle_diagnostics, {noremap = true, silent = true})
+  map('n', '<leader>tt', toggle_diagnostics, {noremap = true, silent = true, desc = 'Toggle diagnostic messages'})
 
 end
 
