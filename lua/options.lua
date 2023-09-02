@@ -1,6 +1,7 @@
 -- Visual
 vim.o.number = true
 vim.o.cursorline = true
+vim.o.showcmd = false
 vim.o.colorcolumn = '100'
 vim.o.list = true
 vim.opt.listchars = {

@@ -26,20 +26,32 @@ local lualine_options = {
     }
   },
   sections = {
-    lualine_a = {'mode'},
-    lualine_b = {'branch', 'diff', 'diagnostics'},
-    lualine_c = {'filename'},
+    lualine_a = {'mode', 'selectioncount'},
+    lualine_b = {
+      {
+        'filename',
+        path = 1,             -- (0 - filename, 1 - relative, 2 - absolute, 3 - absolute w/ tilde)
+        shorting_target = 50, -- shorten file path to leave 50 spaces for other components
+        symbols = {
+          modified = '+',
+          readonly = '[ro]',
+          unnamed = '[no name]',
+          newfile = '[new]',
+        }
+      }
+    },
+    lualine_c = {'diagnostics'},
     lualine_x = {'encoding', 'filetype', tabs },
     lualine_y = {'progress'},
     lualine_z = {'location'}
   },
   inactive_sections = {
     lualine_a = {},
-    lualine_b = {},
-    lualine_c = {'filename'},
-    lualine_x = {'location'},
+    lualine_b = {'filename'},
+    lualine_c = {},
+    lualine_x = {'progress'},
     lualine_y = {},
-    lualine_z = {}
+    lualine_z = {'location'}
   },
   tabline = {},
   winbar = {},
