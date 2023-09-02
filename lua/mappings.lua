@@ -24,3 +24,7 @@ map('n', '<leader>s', toggle_spell_check, {desc = 'Toggle spell checking'})
 
 -- Open Lexplore
 map('n', '<leader>e', ':Lex<CR>', {desc = 'Open file explorer (Lex)'});
+
+map({'n', 'v'}, '/', ':set hlsearch<CR>/', {desc = 'Search'})
+map({'n', 'v'}, '?', ':set hlsearch<CR>?', {desc = 'Search'})
+map('n', '<Esc>', ':set nohlsearch<CR><Esc>', {desc = 'Disable highlight on search'})
