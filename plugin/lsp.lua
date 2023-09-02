@@ -48,6 +48,12 @@ vim.api.nvim_create_autocmd('LspAttach', {
   callback = on_attach,
 })
 
+local signs = { Error = "", Warn = "", Hint = "", Info = "" }
+for type, icon in pairs(signs) do
+    local hl = "DiagnosticSign" .. type
+    vim.fn.sign_define(hl, { text = icon, texthl= hl })
+end
+
 local lsp = require('lspconfig')
 
 lsp.lua_ls.setup({
