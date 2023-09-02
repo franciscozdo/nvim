@@ -1,5 +1,5 @@
 return {
-  'ellisonleao/gruvbox.nvim',
+  'franciscozdo/gruvbox.nvim',
 
   {
     'nvim-lualine/lualine.nvim',
@@ -8,6 +8,13 @@ return {
 
   'lewis6991/gitsigns.nvim',
   'ethanholz/nvim-lastplace',
+
+  {
+    'lukas-reineke/indent-blankline.nvim',
+    opts = {
+      show_current_context = true,
+    },
+  },
 
   {
     'williamboman/mason.nvim',
