@@ -3,9 +3,7 @@ return {
 
   {
     'nvim-lualine/lualine.nvim',
-    dependencies = {
-      'kyazdani42/nvim-web-devicons'
-    }
+    dependencies = { 'nvim-tree/nvim-web-devicons' }
   },
 
   'lewis6991/gitsigns.nvim',
@@ -13,9 +11,7 @@ return {
 
   {
     'williamboman/mason.nvim',
-    config = function()
-      require('mason').setup({})
-    end,
+    opts = {},
   },
 
   'williamboman/mason-lspconfig.nvim',
@@ -29,9 +25,7 @@ return {
 
   {
     'nmac427/guess-indent.nvim',
-    config = function()
-      require('guess-indent').setup()
-    end,
+    opts = {},
   },
 
   {
@@ -53,10 +47,6 @@ return {
       vim.o.timeout = true
       vim.o.timeoutlen = 300
     end,
-    opts = {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
-    }
+    opts = {}
   },
 }

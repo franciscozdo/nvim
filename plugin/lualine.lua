@@ -1,5 +1,11 @@
 vim.o.showmode = false
 
+-- Info about used tabstop
+local function tabs()
+  local expand = (vim.o.expandtab and '+' or '')
+  return string.format('ts=%d%s', vim.o.tabstop, expand)
+end
+
 local lualine_options = {
   options = {
     icons_enabled = true,
@@ -23,7 +29,7 @@ local lualine_options = {
     lualine_a = {'mode'},
     lualine_b = {'branch', 'diff', 'diagnostics'},
     lualine_c = {'filename'},
-    lualine_x = {'encoding', 'filetype'},
+    lualine_x = {'encoding', 'filetype', tabs },
     lualine_y = {'progress'},
     lualine_z = {'location'}
   },
