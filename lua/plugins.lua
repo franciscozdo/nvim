@@ -8,6 +8,7 @@ return {
 
   'lewis6991/gitsigns.nvim',
   'ethanholz/nvim-lastplace',
+  'romainl/vim-cool',
 
   {
     'lukas-reineke/indent-blankline.nvim',

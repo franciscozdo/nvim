@@ -20,7 +20,7 @@ vim.o.expandtab = true
 vim.o.smartindent = true
 
 -- Search setting
-vim.o.hlsearch = false
+vim.o.hlsearch = true
 vim.o.incsearch = true
 vim.o.ignorecase = true
 vim.o.smartcase = true -- If case is used in search then don't ignore it
