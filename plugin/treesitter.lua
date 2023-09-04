@@ -11,6 +11,7 @@ local treesitter_options = {
     'make',
     'diff',
     'markdown',
+    'comment',
   },
   sync_install = true,
   highlight = { enable = true },
