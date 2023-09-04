@@ -87,4 +87,16 @@ require('clangd_extensions').setup({
   }
 })
 
-lsp.pylsp.setup({})
+lsp.pylsp.setup({
+  settings = {
+    pylsp = {
+      plugins = {
+        pycodestyle = {
+          enabled = true,
+          ignore = {'W391', 'W504', 'E266'},
+          maxLineLength = 100,
+        },
+      }
+    }
+  }
+})
