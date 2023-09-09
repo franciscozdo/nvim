@@ -19,6 +19,9 @@ cmp.setup({
     { name = 'luasnip' },
     { name = 'buffer' },
     { name = 'path' },
+    { name = 'tmux', option = { all_panes = true, capture_history = false } },
+     -- capture_history: false -- suggest only from visible part of pane
+     --                  true  -- suggest from all pane history
   }),
   experimental = {
     ghost_text = {
