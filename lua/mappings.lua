@@ -18,7 +18,8 @@ map('n', '<leader>m', ':tabp<CR> ', {desc = 'Go to prev tab'})
 -- Toggle spelling
 local function toggle_spell_check()
   vim.o.spell = not vim.o.spell
-  print('spell: ' .. tostring(vim.o.spell))
+  -- No need for print if lualine is used with 'spell' component
+  -- print('spell: ' .. tostring(vim.o.spell))
 end
 map('n', '<leader>s', toggle_spell_check, {desc = 'Toggle spell checking'})
 

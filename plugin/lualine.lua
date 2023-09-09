@@ -6,6 +6,14 @@ local function tabs()
   return string.format('ts=%d%s', vim.o.tabstop, expand)
 end
 
+local function spell()
+  if vim.o.spell then
+    return '󰓆 '
+  else
+    return ''
+  end
+end
+
 local lualine_options = {
   options = {
     icons_enabled = true,
@@ -41,7 +49,7 @@ local lualine_options = {
       }
     },
     lualine_c = {'diagnostics'},
-    lualine_x = {'encoding', 'filetype', tabs },
+    lualine_x = {'encoding', 'filetype', tabs, { spell, color = { fg = 'lightgreen' } } },
     lualine_y = {'progress'},
     lualine_z = {'location'}
   },
