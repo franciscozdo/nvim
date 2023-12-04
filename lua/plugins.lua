@@ -69,4 +69,6 @@ return {
       'debugloop/telescope-undo.nvim',
     },
   },
+
+  'simrat39/rust-tools.nvim',
 }

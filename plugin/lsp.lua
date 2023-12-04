@@ -3,6 +3,7 @@ require('mason-lspconfig').setup({
     'pylsp',
     'clangd',
     'lua_ls',
+    'rust_analyzer',
   },
 })
 
@@ -100,3 +101,5 @@ lsp.pylsp.setup({
     }
   }
 })
+
+require("rust-tools").setup({})
